@@ -1,3 +1,50 @@
-<ion-app>
+<!-- <ion-app>
   <ion-router-outlet></ion-router-outlet>
+</ion-app> -->
+<ion-app>
+	<ion-menu side="start">
+		<ion-header>
+			<ion-toolbar>
+				<ion-title>
+					PairBnB
+				</ion-title>
+			</ion-toolbar>
+		</ion-header>
+
+		<ion-content>
+			<ion-list>
+				<ion-menu-toggle>
+					<ion-item lines="none" routerLink="/stock">
+						<ion-icon src="assets/icon/warehouse-solid.svg" slot="start"></ion-icon>
+						<ion-label>Stock</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item lines="none" routerLink="/agenda">
+						<ion-icon name="calendar" slot="start"></ion-icon>
+						<ion-label>Agenda</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item lines="none" routerLink="/agenda/tabs/essai">
+						<ion-icon name="calendar" slot="start"></ion-icon>
+						<ion-label>essai</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item lines="none" routerLink="/parametres">
+						<ion-icon name="build"></ion-icon>
+						<ion-label>essai</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item lines="none" (click)="onLogout()" button>
+						<ion-icon name="exit" slot="start"></ion-icon>
+						<ion-label>Logout</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+			</ion-list>
+		</ion-content>
+	</ion-menu>
+	<ion-router-outlet main></ion-router-outlet>
 </ion-app>

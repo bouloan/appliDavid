@@ -1,0 +1,26 @@
+.dateGrid {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+
+	>div {
+		padding: 1rem 0;
+	}
+}
+
+.last-month,
+.next-month {
+	color: #999999;
+	font-size: 90%;
+}
+
+.currentDate,
+.otherDate {
+	padding: 5px;
+}
+
+.currentDate {
+	font-weight: bold;
+	background-color: red;
+	color: white;
+	border-radius: 30px;
+}

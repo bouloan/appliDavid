@@ -1,0 +1,34 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>
+			Stock
+		</ion-title>
+		<ion-button routerLink="/stock/ajout-produit" slot="end">
+			<ion-icon name="add" slot="icon-only"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-item-divider>
+		<ion-label>
+			Choix du calendrier
+		</ion-label>
+	</ion-item-divider>
+
+	<ion-item>
+		<ion-label>kkkk</ion-label>
+		<!-- 	<ion-select (ionChange)="onSelectCalendar($event)">
+			<ion-select-option *ngFor="let cal of calendars" value="{{cal.name}}">{{cal.name}}</ion-select-option>
+		</ion-select> -->
+		<ion-select (ionChange)="onSelectCalendar($event)">
+			<ion-select-option value="rrr">rrr</ion-select-option>
+			<ion-select-option value="rrr">rrr</ion-select-option>
+			<ion-select-option value="rrr">rrr</ion-select-option>
+		</ion-select>
+	</ion-item>
+
+</ion-content>

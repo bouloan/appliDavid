@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste événements</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-padding">
+        <ion-text>{{ pageTitle }}</ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-padding">
+        <ion-segment (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="today">
+            <ion-label>Aujourd'hui</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="week">
+            <ion-label>Semaine</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Custom">
+            <ion-label>Choix</ion-label>
+          </ion-segment-button> </ion-segment
+        >>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{ filterValue }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card *ngFor="let ev of events | periodFilter: filterValue">
+    <ion-card-header>
+      {{ ev.title }}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label> Début: {{ ev.dtstart | date: 'short' }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label> Fin: {{ ev.dtend | date: 'short' }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="locate"></ion-icon>
+          <ion-label class="ion-text-wrap"> Adresse: {{ ev.eventLocation }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

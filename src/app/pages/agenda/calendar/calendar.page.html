@@ -1,0 +1,73 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>Calendrier</ion-title>
+
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+	<ion-card>
+		<ion-card-content>
+			<form (ngSubmit)="save()">
+				<ion-list>
+					<ion-item>
+						<ion-label>Title</ion-label>
+						<ion-input type="text" [(ngModel)]="event.title" name="event.title"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label>Location</ion-label>
+						<ion-input type="text" [(ngModel)]="event.location" name="event.location"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label>Notes</ion-label>
+						<ion-input type="text" [(ngModel)]="event.message" name="event.message"></ion-input>
+					</ion-item>
+					<ion-item>
+						<ion-label>Start Date</ion-label>
+						<ion-datetime displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="event.startDate"
+							name="event.startDate"></ion-datetime>
+					</ion-item>
+					<ion-item>
+						<ion-label>End Date</ion-label>
+						<ion-datetime displayFormat="DD MMM YYYY" pickerFormat="MM/DD/YYYY" [(ngModel)]="event.endDate"
+							name="event.endDate"></ion-datetime>
+					</ion-item>
+					<ion-item>
+						<button ion-button type="submit" full round>Save</button>
+					</ion-item>
+				</ion-list>
+			</form>
+		</ion-card-content>
+	</ion-card>
+
+	<div class="calendar-header">
+		<ion-row class="calendar-month">
+			<ion-col size="2" (click)="goToLastMonth()">
+				<ion-icon name="arrow-back"></ion-icon>
+			</ion-col>
+			<ion-col size="8">{{currentMonth}} {{currentYear}}</ion-col>
+			<ion-col size="2" (click)="goToNextMonth()">
+				<ion-icon name="arrow-forward"></ion-icon>
+			</ion-col>
+		</ion-row>
+	</div>
+	<div class="calendar-body">
+		<div class="dateGrid">
+			<div class="calendar-weekday " *ngFor="let day of week">
+				{{day}}
+			</div>
+		</div>
+		<div class="dateGrid calendar-date">
+			<div *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</div>
+			<div *ngFor="let day of daysInThisMonth; let i = index" (click)="onEvent($event)">
+				<span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+				<ng-template #otherDate class="otherDate">{{day}}</ng-template>
+			</div>
+			<div *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</div>
+		</div>
+	</div>
+</ion-content>

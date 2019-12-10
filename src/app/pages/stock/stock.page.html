@@ -1,0 +1,43 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>
+			Stock
+		</ion-title>
+		<ion-button routerLink="/stock/ajout-produit" slot="end">
+			<ion-icon name="add" slot="icon-only"></ion-icon>
+		</ion-button>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-searchbar placeholder="Recherche de produits"></ion-searchbar>
+
+	<ion-list lines="none">
+		<ion-item-sliding *ngFor="let product of productslist">
+			<ion-item detail="true" lines="inset">
+				<ion-grid (click)="onProductDetails(product.id)">
+					<ion-row>
+						<ion-col>
+							{{ product.name }}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col class="ion-text-end"> {{ product.quantity }} pièces </ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col> marque: {{ product.brand }} </ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+			<ion-item-options (ionSwipe)="onRemoveProduct(product.id)">
+				<ion-item-option color="secondary" expandable>
+					<ion-icon name="trash" slot="icon-only"></ion-icon>
+				</ion-item-option>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+</ion-content>

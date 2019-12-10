@@ -1,0 +1,136 @@
+<form [formGroup]="form">
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="floating">Nom</ion-label>
+					<ion-input type="text" autocomplete autocorrect formControlName="name"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('name').valid && form.get('name').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit comprendre entre 1 et 180 caractères.</ion-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="floating">Marque</ion-label>
+					<ion-input type="text" autocomplete autocorrect formControlName="brand"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('brand').valid && form.get('brand').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit comprendre entre 1 et 180 caractères.</ion-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="floating">Référence</ion-label>
+					<ion-input type="text" autocomplete autocorrect formControlName="reference"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('reference').valid && form.get('reference').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit comprendre entre 1 et 180 caractères.</ion-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="floating">Fournisseur</ion-label>
+					<ion-input type="text" autocomplete autocorrect formControlName="supplier"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('supplier').valid && form.get('supplier').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit comprendre entre 1 et 180 caractères.</ion-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label position="floating">Site fournisseur</ion-label>
+					<ion-input type="text" autocomplete autocorrect formControlName="supplierWebsite"></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('supplierWebsite').valid && form.get('supplierWebsite').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit comprendre entre 1 et 180 caractères.</ion-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="ion-align-items-center">
+			<ion-col>
+				<ion-item>
+					<ion-label position="floating">Quantité</ion-label>
+					<ion-input type="number" autocomplete autocorrect formControlName="quantity" value="0" min="0"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col>
+				<ion-row class="ion-align-items-center">
+					<ion-col class="ion-text-center">
+						<ion-icon name="remove-circle" (click)="decrement('quantity')" class="iconSize"></ion-icon>
+					</ion-col>
+					<ion-col class="ion-text-center">
+						<ion-icon name="add-circle" (click)="increment('quantity')" class="iconSize"></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('quantity').valid && form.get('quantity').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit être au minimum égale à 0.</ion-text>
+			</ion-col>
+		</ion-row>
+
+		<ion-row class="ion-align-items-center">
+			<ion-col size="6">
+				<ion-item>
+					<ion-label position="floating" class="ion-text-wrap">Quantité minimale</ion-label>
+					<ion-input type="number" autocomplete autocorrect formControlName="minQuantity" value="0" min="0"></ion-input>
+				</ion-item>
+			</ion-col>
+			<ion-col size="6">
+				<ion-row class="ion-align-items-center">
+					<ion-col class="ion-text-center">
+						<ion-icon name="remove-circle" (click)="decrement('minQuantity')" class="iconSize"></ion-icon>
+					</ion-col>
+					<ion-col class="ion-text-center">
+						<ion-icon name="add-circle" (click)="increment('minQuantity')" class="iconSize"></ion-icon>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="
+          !form.get('minQuantity').valid && form.get('minQuantity').touched
+        ">
+			<ion-col>
+				<ion-text color="danger">Le champs est obligatoire et doit être au minimum égale à 0.</ion-text>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<ion-button expand="full" [disabled]="!form.valid" (click)="onRegisterProduct()">Enregistrer</ion-button>
+</form>

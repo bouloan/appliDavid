@@ -1,5 +1,8 @@
 {
   "name": "front",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular"
 }
